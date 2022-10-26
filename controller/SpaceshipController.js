@@ -16,13 +16,14 @@ module.exports = {
     });
 
     await cap.addSpaceship(spaceships);
+    return res.json(spaceships);
   },
 
   async index(req, res) {
     const { capId } = req.params;
 
     const cap = await Cap.findByPk(capId, {
-      include: { associaton: "spaceships" },
+      include: { association: "spaceships" },
     });
 
     return res.json(cap);
